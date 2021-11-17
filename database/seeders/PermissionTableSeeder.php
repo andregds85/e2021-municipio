@@ -38,7 +38,8 @@ class PermissionTableSeeder extends Seeder
            'medicoRegulador-list',
            'medicoRegulador-create',
            'medicoRegulador-edit',
-           'medicoRegulador-delete'
+           'medicoRegulador-delete',
+           
           ];
 
         
