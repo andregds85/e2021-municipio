@@ -8,21 +8,21 @@ use App\Models\User;
 use Illuminate\Http\Request;
 
 
-class soudohospital extends Controller
+class soudomunicipio extends Controller
 {
    
     function __construct()
     {
-         $this->middleware('permission:Hospital-list|Hospital-create|Hospital-edit|Hospital-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:Hospital-create', ['only' => ['create','store']]);
-         $this->middleware('permission:Hospital-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:Hospital-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:municipio-list|Hospital-create|municipio-edit|municipio-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:municipio-create', ['only' => ['create','store']]);
+         $this->middleware('permission:municipio-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:municipio-delete', ['only' => ['destroy']]);
     }
 
     public function index(Request $request)
    
     {   
-     return view('soudohospital.index');
+     return view('soudomunicipio.index');
     }
 
     
