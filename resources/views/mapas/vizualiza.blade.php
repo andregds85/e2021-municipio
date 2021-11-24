@@ -3,15 +3,11 @@ use App\Models\mapas;
 use App\Http\Controllers\MapasController;
 use App\Models\incluir_mapa_p2;
 
-
-
 $tabela = mapas::all(); 
 $itensP = mapas::where('id',$id)->get(); 
 
-
 $tabelap2 = incluir_mapa_p2::all(); 
 $itensP2 =  incluir_mapa_p2::where('idMapa',$id)->get(); 
-
 
 ?>
 
@@ -62,8 +58,6 @@ $itensP2 =  incluir_mapa_p2::where('idMapa',$id)->get();
   </tbody>
 </table>
 
-
-
   <table class="table table-bordered">
   <tbody>
     <tr>
@@ -75,14 +69,9 @@ $itensP2 =  incluir_mapa_p2::where('idMapa',$id)->get();
            <?php $hospUsr=Auth::user()->categorias_id; 
            
                   if($hosptb==$hospUsr){
-
-
                   }else{
-                   session()->flush();
 
                   }
-           
-           
            
            ?> 
 
@@ -114,9 +103,7 @@ $itensP2 =  incluir_mapa_p2::where('idMapa',$id)->get();
   </tbody>
 </table>
 
-
 @foreach ($itensP2  as $t2)
-
 
 <table class="table table-bordered">
   <tbody>
@@ -129,23 +116,26 @@ $itensP2 =  incluir_mapa_p2::where('idMapa',$id)->get();
 
 
 
-
-
-
 <table class="table table-bordered">
   <tbody>
     <tr>
       <td><b>Id do Mapa:</b>{{$t2->idMapa }} <br>
            <b>Id do Paciente:</b>{{$t2->idPaciente }}<br>
            <b>Código da Solicitação: </b> {{$t2->codSolicitacao }}<br>
+               <!--    
            <b>CNS:</b>{{$t2->cns }}<br>
+
+                -->    
+
            <b>Municipio:</b>{{$t2->municipio }}<br>
      <b>Usuario do Sistema: </b> {{$t2->usuarioSistema }}<br>
      </td>
      <td>
    
     <b> Nome do Usuário: </b> {{$t2->nomeUsuario}}<br>
+    <!--    
     <b> CPF do Usuário:</b> {{$t2->cpfUsuarioSistema}}<br>
+    -->             
     <b> Macro:</b> {{$t->macro}}<br>
 
 

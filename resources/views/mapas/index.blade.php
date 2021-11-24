@@ -13,7 +13,6 @@
   
   <div><td>Macro:</td><td> {{ Auth::user()->macro}}</td> </div>
     <?php $macroUsr=Auth::user()->macro; ?> 
-    <div><td>Hospital:</td><td> {{ Auth::user()->categorias_id}}</td> </div>
     <?php $hospUsr=Auth::user()->categorias_id; ?> 
 
  <?php
@@ -21,7 +20,7 @@ use App\Http\Controllers\MapasController;
 use App\Models\mapas;
 
 $tabela = mapas::all(); 
-$itens = mapas::where('categoria_id',$hospUsr)->get();
+$itens  = mapas::where('macro',$macroUsr)->get();
 ?>
 
     @if ($message = Session::get('success'))
