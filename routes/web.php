@@ -20,10 +20,6 @@ use App\Http\Controllers\MedicoReguladorController;
 use App\Http\Controllers\obsMapaP2sController;
 
 
-
-
-
-
 Route::get('/', function () {
     return view('home');
 });

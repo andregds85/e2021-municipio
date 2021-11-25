@@ -22,10 +22,7 @@ class MapasController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-      public function create()
-    {
-        return view('mapas.create');
-    }
+
 
      public function store(Request $request)
     {

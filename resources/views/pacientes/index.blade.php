@@ -36,6 +36,7 @@
         </tr>
 <?php
 
+
 /*$itensP = pacientes::where('macro',$m)->get(); */
  $itensP = Pacientes::select("*")
 ->where([

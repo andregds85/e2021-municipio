@@ -5,13 +5,11 @@
             <div class="pull-left">
                 <h2>Mapas</h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('mapas.create') }}">Novo Mapa</a>
-            </div>
+   
         </div>
     </div>
   
-  <div><td>Macro:</td><td> {{ Auth::user()->macro}}</td> </div>
+    <div><td>Macro:</td><td> {{ Auth::user()->macro}}</td> </div>
     <?php $macroUsr=Auth::user()->macro; ?> 
     <?php $hospUsr=Auth::user()->categorias_id; ?> 
 
@@ -29,7 +27,7 @@ $itens  = mapas::where('macro',$macroUsr)->get();
         </div>
     @endif
     
-
+   
     <table class="table table-bordered">
         <tr>
             <th>ID</th>
@@ -63,12 +61,12 @@ $itens  = mapas::where('macro',$macroUsr)->get();
                     @endcan  */ ?>
                 </form>
 	        </td>
+
 	    </tr>
 	    @endforeach
     </table>
 
 
-    {!! $mapas->links() !!}
     {!! $mapas->links() !!}
 
 @endsection

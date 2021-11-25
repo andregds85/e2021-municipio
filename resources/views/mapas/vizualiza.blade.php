@@ -3,24 +3,33 @@ use App\Models\mapas;
 use App\Http\Controllers\MapasController;
 use App\Models\incluir_mapa_p2;
 
+echo $cidade=Auth::user()->cidade;  
+
+
 $tabela = mapas::all(); 
 $itensP = mapas::where('id',$id)->get(); 
 
 $tabelap2 = incluir_mapa_p2::all(); 
-$itensP2 =  incluir_mapa_p2::where('idMapa',$id)->get(); 
 
+/*
+$itensP2 =  incluir_mapa_p2::where('idMapa',$id)->get(); 
+*/
+$itensP2 = incluir_mapa_p2::select("*")
+->where([
+["idMapa", "=", "$id"],
+["municipio", "=", "$cidade"]
+])->get();
 ?>
 
 
-<?php $hospUsr=Auth::user()->categorias_id; ?> 
 
+<?php $hospUsr=Auth::user()->categorias_id; ?> 
 
 <form>
    <input type="button" value="Imprimir" onClick="window.print()" />
 </form>
 
     @foreach ($itensP  as $t)
-
     <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -30,7 +39,6 @@ $itensP2 =  incluir_mapa_p2::where('idMapa',$id)->get();
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
   </head>
 <body>
 <table class="table table-bordered">
@@ -115,7 +123,6 @@ $itensP2 =  incluir_mapa_p2::where('idMapa',$id)->get();
 </table>
 
 
-
 <table class="table table-bordered">
   <tbody>
     <tr>
@@ -124,30 +131,23 @@ $itensP2 =  incluir_mapa_p2::where('idMapa',$id)->get();
            <b>Código da Solicitação: </b> {{$t2->codSolicitacao }}<br>
                <!--    
            <b>CNS:</b>{{$t2->cns }}<br>
-
-                -->    
-
+             -->    
            <b>Municipio:</b>{{$t2->municipio }}<br>
      <b>Usuario do Sistema: </b> {{$t2->usuarioSistema }}<br>
      </td>
      <td>
-   
+  
     <b> Nome do Usuário: </b> {{$t2->nomeUsuario}}<br>
     <!--    
     <b> CPF do Usuário:</b> {{$t2->cpfUsuarioSistema}}<br>
     -->             
     <b> Macro:</b> {{$t->macro}}<br>
-
-
   </td>
     </tr>
   </tbody>
 </table>
 
 @endforeach
-
-
-
 
 
 
