@@ -10,11 +10,10 @@ class CreateMunicipioTable extends Migration
     {
         Schema::create('nunicipio', function (Blueprint $table) {
             $table->id();
-            $table->string('idIncMapa');
-            $table->string('obsMuni');
-            $table->string('login');
-            $table->string('cpf');
-            $table->string('macro');
+            $table->string('idp2');
+            $table->string('idPaciente');
+            $table->text('observação');
+            $table->string('usuarioSistema');
             $table->timestamps();
         });
     }

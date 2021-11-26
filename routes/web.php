@@ -18,6 +18,11 @@ use App\Http\Controllers\contarController;
 use App\Http\Controllers\MunicipioController;
 use App\Http\Controllers\MedicoReguladorController;
 use App\Http\Controllers\obsMapaP2sController;
+use App\Http\Controllers\MapaMunicipioController;
+
+
+
+
 
 
 Route::get('/', function () {
@@ -57,11 +62,14 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('mapasfull', 'App\Http\Controllers\obsMapaP2sController@mapasFull');
 
 
+    Route::resource('mapamunicipio', MapaMunicipioController::class);
+
+
     
     
     
 
-
+    
 
 
     
