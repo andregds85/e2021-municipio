@@ -21,12 +21,34 @@ class MapaMunicipioController extends Controller
          $this->middleware('permission:mapas-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:mapas-delete', ['only' => ['destroy']]);
     }
+
+
+    
      public function index()
     {
-        return view('MapaMunicipio.index');
+    
+
     }
    
 
+    public function show($id)
+    {
+        return view('MapaMunicipio.observacao',['id'=>$id]);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
      public function store(Request $request)
     {

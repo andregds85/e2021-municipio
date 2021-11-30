@@ -141,6 +141,8 @@ $itensP2 = incluir_mapa_p2::select("*")
 
 
     <b> nome do link:</b> mapamunicipio<br>
+    <b><a class="btn btn-info" href="{{ url('mapamunicipio',$t2->id) }}">Inserir observação</a>
+
 
   </td>
     </tr>

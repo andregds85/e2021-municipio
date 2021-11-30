@@ -11,7 +11,7 @@ class municipio_mapa_p3 extends Model
     protected $table="municipio_mapa_p3";
     protected $fillable = [
         'idp2',
-        'observação',
+        'observacao',
         'usuarioSistema',
          ];
 }
