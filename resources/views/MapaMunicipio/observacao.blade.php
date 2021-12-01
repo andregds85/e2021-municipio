@@ -6,54 +6,10 @@
 <?php $login=Auth::user()->email; ?>
 
 <?php 
-use App\Models\mapas;
-use App\Http\Controllers\MapasController;
-
+use App\Models\municipio_mapa_p3;
+use App\Http\Controllers\MapaMunicipioController;
 $id;
-
 ?>
-
-<SCRIPT> 
-<!--
-function valida()
-{
-
-if(document.regform.nome.value=="" || document.regform.nome.value.length < 5)
-{
-alert( "Preencha campo Nome do Mapa! " );
-regform.nome.focus();
-return false;
-}
-
-if(document.regform.cns.value.length < 12  || document.regform.cns.value.length > 16)
-{
-alert( "Preencha campo CNS corretamente ");
-regform.cns.focus();
-return false;
-}
-
-return true;
-}
- 
-
-</script>
-
-<script>
-function onlynumber(evt) {
-   var theEvent = evt || window.event;
-   var key = theEvent.keyCode || theEvent.which;
-   key = String.fromCharCode( key );
-   //var regex = /^[0-9.,]+$/;
-   var regex = /^[0-9.]+$/;
-   if( !regex.test(key) ) {
-      theEvent.returnValue = false;
-      if(theEvent.preventDefault) theEvent.preventDefault();
-   }
-}
-
-</script>
-
-
 
 
 <div class="container">
@@ -63,7 +19,7 @@ function onlynumber(evt) {
                 <div class="card-header">{{ __('Criando Mapa de Cirurgias Eletivas') }}</div>
 
                 <div class="card-body">
-                <form action="{{ route('mapas.store') }}" method="POST" id="validate" enctype="multipart/form-data" NAME="regform"
+                <form action="{{ route('mapamunicipio.store') }}" method="POST" id="validate" enctype="multipart/form-data" NAME="regform"
     onsubmit="return valida()">
  
                         @csrf
@@ -73,15 +29,13 @@ function onlynumber(evt) {
                         </div>
                         </div>
                         </div>
-
-
+                        
     
     <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Dados do Mapa') }}</div>
-
                 <div class="card-body">
 
 
@@ -98,15 +52,26 @@ function onlynumber(evt) {
                             </div>
                        </div>
                  
-        
-                                          
+                                           
                     <!--  passo 1 -->
                        <div class="form-group row">
                             <label for="cpf" class="col-md-4 col-form-label text-md-right">{{ __('Observação') }}</label>
                             <div class="col-md-6">
-                            <select class="form-control" name="passo1" id="confirma">
+                            <select class="form-control" name="observacao" id="confirma">
                               <option value='Defina uma observação' >Defina uma observação</option>
-                              <option value='Defina uma observação' >Defina uma observação</option>
+                              <option value='1. Aguarda cirurgia' >1. Aguarda cirurgia</option>
+                              <option value='2. Já realizou no SUS' >2. Já realizou no SUS</option>
+                              <option value='3. Já realizou particular' >3. Já realizou particular</option>
+                              <option value='4. Não deseja mais realizar' >4. Não deseja mais realizar</option>
+                              <option value='5. Contra-indicado o procedimento' >5. Contra-indicado o procedimento</option>
+                              <option value='6. Sem contato' >6. Sem contato</option>
+                              <option value='7. Não localizado' >7. Não localizado</option>
+                              <option value='8. Óbito' >8. Óbito</option>
+                              <option value='9. Termo de desistência assinado' >9. Termo de desistência assinado</option>
+                              <option value='10. Paciente com indicação de UTI' >10. Paciente com indicação de UTI</option>
+                              <option value='11. Paciente aguardando avaliação de outra especialidade' >11. Paciente aguardando avaliação de outra especialidade</option>
+                              <option value='12. Paciente não compareceu na data agendada da cirurgia' >12. Paciente não compareceu na data agendada da cirurgia</option>
+                           
 
                               </select>     
                                 @error('passo1')
@@ -116,25 +81,23 @@ function onlynumber(evt) {
                                 @enderror
                             </div>
                            </div>
-             
-                         
+            
+                     
 
                     <!--  login 1 -->
                     <div class="form-group">
                       <label for="exampleInputCategoria">Login </label>
-                  <select class="form-control" name="login"> 
+                  <select class="form-control" name="usuarioSistema"> 
                       <option value='<?php echo $login ?>' >{{Auth::user()->email}}</option>
                     </select>
                      </div>
-
-                                        </div>
+                   </div>
                         </div>
                         </div>
                         </div>
                         </div>
 
-    
-                 
+                    
 
 <!--  fim -->
                             <div class="form-group row mb-0">
@@ -153,3 +116,6 @@ function onlynumber(evt) {
 @endsection
 
  
+
+
+

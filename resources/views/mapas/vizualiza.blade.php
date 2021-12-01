@@ -139,8 +139,6 @@ $itensP2 = incluir_mapa_p2::select("*")
     <b> CPF do Usuário:</b> {{$t2->cpfUsuarioSistema}}<br>
     <b> Macro:</b> {{$t->macro}}<br>
 
-
-    <b> nome do link:</b> mapamunicipio<br>
     <b><a class="btn btn-info" href="{{ url('mapamunicipio',$t2->id) }}">Inserir observação</a>
 
 
@@ -150,8 +148,6 @@ $itensP2 = incluir_mapa_p2::select("*")
 </table>
 
 @endforeach
-
-
 
 
 

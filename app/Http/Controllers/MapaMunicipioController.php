@@ -21,34 +21,17 @@ class MapaMunicipioController extends Controller
          $this->middleware('permission:mapas-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:mapas-delete', ['only' => ['destroy']]);
     }
-
-
-    
+   
      public function index()
     {
     
-
     }
    
-
     public function show($id)
     {
         return view('MapaMunicipio.observacao',['id'=>$id]);
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-    
 
      public function store(Request $request)
     {
@@ -56,10 +39,8 @@ class MapaMunicipioController extends Controller
  
         ]);
 
-       incluir_mapa_p2::create($request->all());
-       Pacientes::where('id','idPaciente')->update(['statusSolicitacao' => 'S']);   
-       return redirect()->route('mapasReg.index')
-                        ->with('Sucesso','Paciente Incluido no Mapa com Sucesso.');
+       municipio_mapa_p3::create($request->all());
+ 
     }
     
 

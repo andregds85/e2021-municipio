@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class municipio_mapa_p3 extends Model
 {
     use HasFactory;
-    protected $table="municipio_mapa_p3";
+    protected $table="mapamunicipiop3";
     protected $fillable = [
         'idp2',
         'observacao',
