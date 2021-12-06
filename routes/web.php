@@ -22,9 +22,6 @@ use App\Http\Controllers\MapaMunicipioController;
 
 
 
-
-
-
 Route::get('/', function () {
     return view('home');
 });
@@ -56,8 +53,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('observacao', obsMapaP2sController::class);
 
 
+
     Route::get('munipac', 'App\Http\Controllers\MunicipioController@paciente');
-    
     Route::get('excluir', 'App\Http\Controllers\contarController@show');
     Route::get('mapasfull', 'App\Http\Controllers\obsMapaP2sController@mapasFull');
 
@@ -65,18 +62,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('mapamunicipio', MapaMunicipioController::class);
 
 
-    
-    
-    
-
-    
-
-
-    
+        
     /* url chamando um methodo do Controller 
     Route::get('pacienteMapa', 'App\Http\Controllers\mapasRegController@abc');
     */
-
    
     Route::get('import_exportpacie', 'App\Http\Controllers\Import_Export_ControllerPacie@importExport');
     Route::post('importpacie', 'App\Http\Controllers\Import_Export_ControllerPacie@import');

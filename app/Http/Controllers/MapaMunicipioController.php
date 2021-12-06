@@ -40,12 +40,34 @@ class MapaMunicipioController extends Controller
         ]);
 
        municipio_mapa_p3::create($request->all());
+       return redirect()->route('mapas.index');
+
  
     }
     
 
+
+    
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -2,14 +2,24 @@
 use App\Models\mapas;
 use App\Http\Controllers\MapasController;
 use App\Models\incluir_mapa_p2;
+use App\Models\municipio_mapa_p3;
+
+
+
 
 echo $cidade=Auth::user()->cidade;  
+
+
 
 
 $tabela = mapas::all(); 
 $itensP = mapas::where('id',$id)->get(); 
 
-$tabelap2 = incluir_mapa_p2::all(); 
+$tabelap3 = incluir_mapa_p2::all(); 
+
+
+
+
 
 /*
 $itensP2 =  incluir_mapa_p2::where('idMapa',$id)->get(); 
@@ -139,13 +149,27 @@ $itensP2 = incluir_mapa_p2::select("*")
     <b> CPF do Usuário:</b> {{$t2->cpfUsuarioSistema}}<br>
     <b> Macro:</b> {{$t->macro}}<br>
 
-    <b><a class="btn btn-info" href="{{ url('mapamunicipio',$t2->id) }}">Inserir observação</a>
+    <?php 
+
+    $tabelap3 = municipio_mapa_p3::all();              
+   echo  $itensP = municipio_mapa_p3::where('idp2',$t2->id)->count();
+            
+    
+                    if ($itensP==0) { ?>
+                      <b><a class="btn btn-info" href="{{ url('mapamunicipio',$t2->id) }}">Inserir observação</a>
+                        
+                   <?php  } ?>
 
 
   </td>
     </tr>
   </tbody>
 </table>
+
+
+
+
+
 
 @endforeach
 

@@ -21,7 +21,6 @@
       </div>
     </div>
 
-
     <!-- Passo 2 !-->
     <div class="card mb-3">
         <div class="card-body">
@@ -32,7 +31,6 @@
           <p class="card-text">Cadastrar todos os Hospitais </p>
         </div>
       </div>
-
 
     <!-- Passo 3 !-->
     <div class="card mb-3">

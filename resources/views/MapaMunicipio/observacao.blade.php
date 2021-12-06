@@ -1,16 +1,39 @@
 @extends('limpo.app')
 @section('content')
   
-<?php $hospital=Auth::user()->categorias_id; ?>
-<?php $userMacro=Auth::user()->macro; ?>
-<?php $login=Auth::user()->email; ?>
-
-<?php 
+<?php $hospital=Auth::user()->categorias_id; 
+$userMacro=Auth::user()->macro; 
+$login=Auth::user()->email; 
+use App\Models\incluir_mapa_p2;
 use App\Models\municipio_mapa_p3;
 use App\Http\Controllers\MapaMunicipioController;
-$id;
-?>
 
+$id;
+ $cidade=Auth::user()->cidade;  
+
+
+$tabela = incluir_mapa_p2::all(); 
+$itensP = incluir_mapa_p2::where('id',$id)->get(); 
+
+?>
+@foreach ($itensP  as $t)
+<br>
+<b> Municipio:</b> {{$t->municipio}}<br>
+<?php
+ $municipio=$t->municipio;
+if($municipio<>$cidade){
+ session()->flush(); 
+}
+
+$tabelap3 = municipio_mapa_p3::all();              
+echo  $itensP = municipio_mapa_p3::where('idp2',$id)->count();
+        
+
+                if ($itensP>0) { 
+                    
+                    session()->flush(); 
+                    
+                 } ?>
 
 <div class="container">
     <div class="row justify-content-center">
@@ -21,9 +44,8 @@ $id;
                 <div class="card-body">
                 <form action="{{ route('mapamunicipio.store') }}" method="POST" id="validate" enctype="multipart/form-data" NAME="regform"
     onsubmit="return valida()">
- 
-                        @csrf
 
+                        @csrf
                         </div>
                         </div>
                         </div>
@@ -115,7 +137,8 @@ $id;
 </div>
 @endsection
 
- 
+@endforeach
+
 
 
 
