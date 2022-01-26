@@ -22,7 +22,8 @@ $itensP = incluir_mapa_p2::where('id',$id)->get();
 <?php
  $municipio=$t->municipio;
 if($municipio<>$cidade){
- session()->flush(); 
+
+
 }
 
 $tabelap3 = municipio_mapa_p3::all();              
@@ -31,7 +32,7 @@ echo  $itensP = municipio_mapa_p3::where('idp2',$id)->count();
 
                 if ($itensP>0) { 
                     
-                    session()->flush(); 
+
                     
                  } ?>
 
