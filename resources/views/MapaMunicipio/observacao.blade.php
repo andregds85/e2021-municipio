@@ -119,7 +119,6 @@ echo  $itensP = municipio_mapa_p3::where('idp2',$id)->count();
                         </div>
                         </div>
                         </div>
-
                     
 
 <!--  fim -->
