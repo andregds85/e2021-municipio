@@ -1,12 +1,12 @@
 @extends('layouts5.app')
 @section('content')
+
+
 <?php $perfil=Auth::user()->perfil; 
 if($perfil<>"municipal"){
   session()->flush();
 }
 ?>
-
-
 
 <div class="container">
     <div class="row justify-content-center">
@@ -36,8 +36,4 @@ if($perfil<>"municipal"){
     </div>
 </div>
 
-
-
 @endsection
-
-

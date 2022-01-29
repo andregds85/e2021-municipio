@@ -4,25 +4,27 @@
 <?php $hospital=Auth::user()->categorias_id; 
 $userMacro=Auth::user()->macro; 
 $login=Auth::user()->email; 
+
 use App\Models\incluir_mapa_p2;
 use App\Models\municipio_mapa_p3;
 use App\Http\Controllers\MapaMunicipioController;
 
-$id;
+ $id;
  $cidade=Auth::user()->cidade;  
-
 
 $tabela = incluir_mapa_p2::all(); 
 $itensP = incluir_mapa_p2::where('id',$id)->get(); 
+
 
 ?>
 @foreach ($itensP  as $t)
 <br>
 <b> Municipio:</b> {{$t->municipio}}<br>
+<b> ID do Paciente:</b> {{$t->idPaciente}}<br>
 <?php
  $municipio=$t->municipio;
+ $idPaciente=$t->idPaciente;
 if($municipio<>$cidade){
-
 
 }
 
@@ -31,9 +33,8 @@ echo  $itensP = municipio_mapa_p3::where('idp2',$id)->count();
         
 
                 if ($itensP>0) { 
-                    
-
-                    
+                
+                   
                  } ?>
 
 <div class="container">
@@ -75,6 +76,33 @@ echo  $itensP = municipio_mapa_p3::where('idp2',$id)->count();
                             </div>
                        </div>
                  
+
+                     <!-- ID do Paciente -->
+                       <div class="form-group row">
+                            <label for="idPaciente" class="col-md-4 col-form-label text-md-right">{{ __('Id do Paciente') }}</label>
+                            <div class="col-md-6">
+                            <input id="idPaciente" type="text" class="form-control @error('idPaciente') is-invalid @enderror" name="idPaciente"  value="<?php echo $idPaciente; ?>" required autocomplete="idPaciente" readonly>
+                                @error('idPaciente')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                       </div>
+                 
+                        
+
+
+
+
+
+
+
+
+
+
+
+
                                            
                     <!--  passo 1 -->
                        <div class="form-group row">

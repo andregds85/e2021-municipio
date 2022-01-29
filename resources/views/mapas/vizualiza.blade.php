@@ -138,6 +138,7 @@ $itensP2 = incluir_mapa_p2::select("*")
     <tr>
       <td><b>Id do Mapa:</b>{{$t2->idMapa }} <br>
            <b>Id do Paciente:</b>{{$t2->idPaciente }}<br>
+           <?php $pacid=$t2->idPaciente; ?>
            <b>Código da Solicitação: </b> {{$t2->codSolicitacao }}<br>
            <b>CNS:</b>{{$t2->cns }}<br>
            <b>Municipio:</b>{{$t2->municipio }}<br>
@@ -156,10 +157,17 @@ $itensP2 = incluir_mapa_p2::select("*")
             
     
                     if ($itensP==0) { ?>
-                      <b><a class="btn btn-info" href="{{ url('mapamunicipio',$t2->id) }}">Inserir observação</a>
+                    <!--
+                      <b><a class="btn btn-info" href="{{ url('mapamunicipio',$t2->idPaciente) }}">Inserir observação</a> 
+                    -->
+
+                    
+                    <b><a class="btn btn-info" href="{{ url('mapamunicipio',$t2->id) }}">Inserir observação</a> 
+
+
+
                         
                    <?php  } ?>
-
 
   </td>
     </tr>
