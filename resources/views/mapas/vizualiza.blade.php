@@ -9,11 +9,10 @@ use App\Models\Pacientes;
 
 echo $cidade=Auth::user()->cidade;  
 
-
 $tabela = mapas::all(); 
 $itensP = mapas::where('id',$id)->get(); 
-
 $tabelap3 = incluir_mapa_p2::all(); 
+
 
 
 /*
@@ -21,16 +20,11 @@ $itensP2 =  incluir_mapa_p2::where('idMapa',$id)->get();
 */
 $itensP2 = incluir_mapa_p2::select("*")
 ->where([
-["idMapa", "=", "$id"]
+["idMapa", "=", "$id"],
 ])->get();
+
+
 ?>
-
-
-
-
-
-
-
 <?php $hospUsr=Auth::user()->categorias_id; ?> 
 
 <form>
@@ -91,13 +85,13 @@ $itensP2 = incluir_mapa_p2::select("*")
            
            ?> 
 
-
            <b>Nome do Mapa:</b>{{$t->nome }}<br>
            <b>Descrição:</b>{{$t->descricao }}<br>
      <b>Especialidade: </b> {{$t->especialidade }}<br>
      </td>
      <td>
    
+     
     <b> Código do Procedimento: </b> {{$t->cod_procedimento}}<br>
     <b> Procedimento:</b> {{$t->procedimento}}<br>
     <b> Vagas:</b> {{$t->vagas}}<br>
@@ -110,6 +104,7 @@ $itensP2 = incluir_mapa_p2::select("*")
 </table>
 
 
+
 <table class="table table-bordered">
   <tbody>
     <tr>
@@ -119,6 +114,7 @@ $itensP2 = incluir_mapa_p2::select("*")
   </tbody>
 </table>
 @foreach ($itensP2  as $t2)
+
 
 <table class="table table-bordered">
   <tbody>
@@ -137,26 +133,37 @@ $itensP2 = incluir_mapa_p2::select("*")
            <b>Id do Paciente:</b>{{$t2->idPaciente }}<br>
 
         <?php 
-   
         $pacRG=$t2->idPaciente;  
         $pacienteAll = Pacientes::all();
-        $extrapac = Pacientes::where('id',$pacRG)->get(); 
-             
-        ?>
-           @foreach ($extrapac  as $t4)
+      /*  $extrapac1 = Pacientes::where('municipio',$cidade)->get(); */
+      /*  $extrapac = Pacientes::where('id',$pacRG)->get(); */
 
+
+        $extrapac = Pacientes::select("*")
+        ->where([
+        ["id", "=", "$pacRG"],
+        ["municipio", "=", "$cidade"],
+        ])->get();          
+
+                  
+        ?>
+            @foreach ($extrapac  as $t4)
            <?php $pacid=$t2->idPaciente; ?>
            <b>Código da Solicitação: </b> {{$t4->solicitacao }}<br>
            <b>CNS:</b>{{$t4->cns }}<br>
            <b>Municipio:</b>{{$t4->municipio }}<br>
+  
      </td>
      <td>
   
     <b> Macro:</b> {{$t->macro}}<br>
 
-    <?php 
 
-    $tabelap3 = municipio_mapa_p3::all();              
+
+
+
+   <?php 
+   $tabelap3 = municipio_mapa_p3::all();              
    echo  $itensP = municipio_mapa_p3::where('idp2',$t2->id)->count();
             
     
@@ -187,6 +194,8 @@ $itensP2 = incluir_mapa_p2::select("*")
 
 
     </html>
+
+
 
 
 
