@@ -1,9 +1,10 @@
 @extends('limpo.app')
 @section('content')
-  
+<?php session_start(); ?>  
 <?php $hospital=Auth::user()->categorias_id; 
 $userMacro=Auth::user()->macro; 
 $login=Auth::user()->email; 
+
 
 use App\Models\incluir_mapa_p2;
 use App\Models\municipio_mapa_p3;
@@ -19,13 +20,13 @@ $itensP = incluir_mapa_p2::where('id',$id)->get();
 ?>
 @foreach ($itensP  as $t)
 <br>
-<b> Municipio:</b> {{$t->municipio}}<br>
+<b> Municipio:</b><?php  echo $municipioPaciente=$_SESSION['municipioPaciente']; ?> <br>
+
 <b> ID do Paciente:</b> {{$t->idPaciente}}<br>
 <?php
  $municipio=$t->municipio;
  $idPaciente=$t->idPaciente;
 if($municipio<>$cidade){
-
 }
 
 $tabelap3 = municipio_mapa_p3::all();              

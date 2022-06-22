@@ -1,4 +1,6 @@
 <?php 
+session_start();
+
 use App\Models\mapas;
 use App\Http\Controllers\MapasController;
 use App\Models\incluir_mapa_p2;
@@ -12,8 +14,6 @@ echo $cidade=Auth::user()->cidade;
 $tabela = mapas::all(); 
 $itensP = mapas::where('id',$id)->get(); 
 $tabelap3 = incluir_mapa_p2::all(); 
-
-
 
 /*
 $itensP2 =  incluir_mapa_p2::where('idMapa',$id)->get(); 
@@ -90,7 +90,7 @@ $itensP2 = incluir_mapa_p2::select("*")
      <b>Especialidade: </b> {{$t->especialidade }}<br>
      </td>
      <td>
-   
+ 
      
     <b> Código do Procedimento: </b> {{$t->cod_procedimento}}<br>
     <b> Procedimento:</b> {{$t->procedimento}}<br>
@@ -102,8 +102,6 @@ $itensP2 = incluir_mapa_p2::select("*")
     </tr>
   </tbody>
 </table>
-
-
 
 <table class="table table-bordered">
   <tbody>
@@ -138,7 +136,7 @@ $itensP2 = incluir_mapa_p2::select("*")
            <?php 
         $pacRG=$t2->idPaciente;  
         $pacienteAll = Pacientes::all();
-
+     
         $extrapac = Pacientes::select("*")
         ->where([
         ["id", "=", "$pacRG"],
@@ -153,27 +151,25 @@ $itensP2 = incluir_mapa_p2::select("*")
            
        echo "<p><strong><br>";     
        echo  $municipio=$t4->municipio;
-       echo "</p></strong></br>";     
+       $_SESSION['municipioPaciente']=$municipio; 
+       echo "</p></strong></br>";    
+       
+       echo "<p>Código da Solicitação: ";
+       echo "<p><strong>";     
+       echo  $solicitacao=$t4->solicitacao;
+       echo "</p></strong></br>";   
+
+
+       echo "<p>Código da Solicitação: ";
+       echo "<p><strong>";     
+       echo  $cns=$t4->cns;
+       echo "</p></strong></br>";      
+
           
 
           ?>
 
-
-
-
-
 @endforeach
-
-
-
-
-
-
-
-
-
-
-
 
    <?php 
    $tabelap3 = municipio_mapa_p3::all();              
@@ -212,8 +208,3 @@ $itensP2 = incluir_mapa_p2::select("*")
 
 
 
-
-
-
-
- 
