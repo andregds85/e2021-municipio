@@ -132,31 +132,7 @@ $itensP2 = incluir_mapa_p2::select("*")
       <td><b>Id do Mapa:</b>{{$t2->idMapa }} <br>
            <b>Id do Paciente:</b>{{$t2->idPaciente }}<br>
 
-        <?php 
-        $pacRG=$t2->idPaciente;  
-        $pacienteAll = Pacientes::all();
-      /*  $extrapac1 = Pacientes::where('municipio',$cidade)->get(); */
-      /*  $extrapac = Pacientes::where('id',$pacRG)->get(); */
 
-
-        $extrapac = Pacientes::select("*")
-        ->where([
-        ["id", "=", "$pacRG"],
-        ["municipio", "=", "$cidade"],
-        ])->get();          
-
-                  
-        ?>
-            @foreach ($extrapac  as $t4)
-           <?php $pacid=$t2->idPaciente; ?>
-           <b>Código da Solicitação: </b> {{$t4->solicitacao }}<br>
-           <b>CNS:</b>{{$t4->cns }}<br>
-           <b>Municipio:</b>{{$t4->municipio }}<br>
-  
-     </td>
-     <td>
-  
-    <b> Macro:</b> {{$t->macro}}<br>
 
 
 
@@ -180,7 +156,6 @@ $itensP2 = incluir_mapa_p2::select("*")
   </tbody>
 </table>
 
-@endforeach
 @endforeach
 
 
