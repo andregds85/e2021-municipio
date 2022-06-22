@@ -135,6 +135,43 @@ $itensP2 = incluir_mapa_p2::select("*")
 
 
 
+           <?php 
+        $pacRG=$t2->idPaciente;  
+        $pacienteAll = Pacientes::all();
+
+        $extrapac = Pacientes::select("*")
+        ->where([
+        ["id", "=", "$pacRG"],
+        ["municipio", "=", "$cidade"],
+        ])->get();          
+
+                  
+        ?>
+            @foreach ($extrapac  as $t4)
+
+       <?php    
+           
+       echo "<p><strong><br>";     
+       echo  $municipio=$t4->municipio;
+       echo "</p></strong></br>";     
+          
+
+          ?>
+
+
+
+
+
+@endforeach
+
+
+
+
+
+
+
+
+
 
 
 
@@ -156,7 +193,9 @@ $itensP2 = incluir_mapa_p2::select("*")
   </tbody>
 </table>
 
+
 @endforeach
+
 
 
     <!-- JavaScript (Opcional) -->
@@ -169,8 +208,6 @@ $itensP2 = incluir_mapa_p2::select("*")
 
 
     </html>
-
-
 
 
 
