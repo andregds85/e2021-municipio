@@ -4,38 +4,64 @@
 <?php $hospital=Auth::user()->categorias_id; 
 $userMacro=Auth::user()->macro; 
 $login=Auth::user()->email; 
-
-
 use App\Models\incluir_mapa_p2;
 use App\Models\municipio_mapa_p3;
 use App\Http\Controllers\MapaMunicipioController;
+use App\Http\Controllers\PacienteController;
+use App\Models\Pacientes;
 
- $id;
- $cidade=Auth::user()->cidade;  
+$id;
+$cidade=Auth::user()->cidade;  
 
 $tabela = incluir_mapa_p2::all(); 
 $itensP = incluir_mapa_p2::where('id',$id)->get(); 
 
-
 ?>
-@foreach ($itensP  as $t)
-<br>
-<b> Municipio:</b><?php  echo $municipioPaciente=$_SESSION['municipioPaciente']; ?> <br>
+
+@foreach($itensP  as $t)
+
 
 <b> ID do Paciente:</b> {{$t->idPaciente}}<br>
 <?php
  $municipio=$t->municipio;
  $idPaciente=$t->idPaciente;
-if($municipio<>$cidade){
-}
+
+    /* comparar localizar o municipio do paciente */ 
+
+
+
+
+
+         $tab1 = pacientes::all(); 
+         $pac1 = pacientes::where('id',$idPaciente)->get(); 
+
+?>
+
+
+
+            @foreach($pac1  as $tatuPac)
+
+            {{$tatuPac->id}}
+            {{$tatuPac->municipio}}
+
+
+
+            @endforeach
+
+
+<?php 
+echo "<br>";
+echo $idPaciente;
+echo "<br>";
+
 
 $tabelap3 = municipio_mapa_p3::all();              
 echo  $itensP = municipio_mapa_p3::where('idp2',$id)->count();
-        
 
+               
                 if ($itensP>0) { 
-                
-                   
+              
+                 
                  } ?>
 
 <div class="container">
@@ -91,20 +117,9 @@ echo  $itensP = municipio_mapa_p3::where('idp2',$id)->count();
                             </div>
                        </div>
                  
-                        
+                       
 
-
-
-
-
-
-
-
-
-
-
-
-                                           
+                                          
                     <!--  passo 1 -->
                        <div class="form-group row">
                             <label for="cpf" class="col-md-4 col-form-label text-md-right">{{ __('Observação') }}</label>
@@ -164,9 +179,28 @@ echo  $itensP = municipio_mapa_p3::where('idp2',$id)->count();
         </div>
     </div>
 </div>
-@endsection
+
+
+
+
+
+
+
+
 
 @endforeach
+
+@endsection
+
+
+
+
+
+
+
+
+
+
 
 
 

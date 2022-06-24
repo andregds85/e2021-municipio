@@ -11,9 +11,11 @@ use App\Models\Pacientes;
 
 echo $cidade=Auth::user()->cidade;  
 
+
 $tabela = mapas::all(); 
 $itensP = mapas::where('id',$id)->get(); 
 $tabelap3 = incluir_mapa_p2::all(); 
+
 
 /*
 $itensP2 =  incluir_mapa_p2::where('idMapa',$id)->get(); 
@@ -81,6 +83,7 @@ $itensP2 = incluir_mapa_p2::select("*")
                   if($hosptb==$hospUsr){
                   }else{
 
+
                   }
            
            ?> 
@@ -129,7 +132,11 @@ $itensP2 = incluir_mapa_p2::select("*")
     <tr>
       <td><b>Id do Mapa:</b>{{$t2->idMapa }} <br>
            <b>Id do Paciente:</b>{{$t2->idPaciente }}<br>
+           <?php
 
+         unset( $_SESSION['municipioPaciente']);         
+         $_SESSION['municipioPaciente']='1'; ?>
+     
 
 
 
@@ -204,7 +211,5 @@ $itensP2 = incluir_mapa_p2::select("*")
 
 
     </html>
-
-
 
 
