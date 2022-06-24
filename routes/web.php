@@ -19,6 +19,8 @@ use App\Http\Controllers\MunicipioController;
 use App\Http\Controllers\MedicoReguladorController;
 use App\Http\Controllers\obsMapaP2sController;
 use App\Http\Controllers\MapaMunicipioController;
+use App\Http\Controllers\sairController;
+
 
 
 Route::get('/', function () {
@@ -50,6 +52,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('municipio', MunicipioController::class);
     Route::resource('regulador', MedicoReguladorController::class);
     Route::resource('observacao', obsMapaP2sController::class);
+    Route::resource('sair', sairController::class);
+
 
 
     Route::get('munipac', 'App\Http\Controllers\MunicipioController@paciente');
@@ -69,6 +73,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('import_export', 'App\Http\Controllers\Import_Export_Controller@importExport');
     Route::post('import', 'App\Http\Controllers\Import_Export_Controller@import');
     Route::get('export', 'App\Http\Controllers\Import_Export_Controller@export');
+
+
+
 
 
 });

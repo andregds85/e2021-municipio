@@ -11,7 +11,7 @@ use App\Http\Controllers\PacienteController;
 use App\Models\Pacientes;
 
 $id;
-$cidade=Auth::user()->cidade;  
+$cidade2=Auth::user()->cidade;  
 
 $tabela = incluir_mapa_p2::all(); 
 $itensP = incluir_mapa_p2::where('id',$id)->get(); 
@@ -26,37 +26,78 @@ $itensP = incluir_mapa_p2::where('id',$id)->get();
  $municipio=$t->municipio;
  $idPaciente=$t->idPaciente;
 
-    /* comparar localizar o municipio do paciente */ 
-
-
-
-
-
          $tab1 = pacientes::all(); 
          $pac1 = pacientes::where('id',$idPaciente)->get(); 
 
 ?>
 
-
-
             @foreach($pac1  as $tatuPac)
 
             {{$tatuPac->id}}
-            {{$tatuPac->municipio}}
 
+        
 
+          {{$tatuPac->municipio}}
+
+          <?php $local=$tatuPac->municipio; ?>
+        
+                
+            
 
             @endforeach
 
 
+
+
+            <?php 
+                
+                              
+                    $local;
+                    $cidade2;
+                    $contarLocal=strlen($local);
+                    $contarCidadade2=strlen($cidade2);
+
+                    if($contarCidadade2 == $contarLocal){
+
+                        echo "<script> alert('Área permitida, úsuario e paciente do mesmo municipio')</script>";
+
+
+
+                    }else{
+                     
+                        echo "<script> alert('Voce Tentou acessar dados de Pacientes que não são da tua Região ')</script>";
+                        echo redirect()->route('sair.index'); 
+                  
+                    }
+                  
+                    
+                    
+                   
+              ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <?php 
 echo "<br>";
-echo $idPaciente;
+$idPaciente;
 echo "<br>";
+
+
 
 
 $tabelap3 = municipio_mapa_p3::all();              
-echo  $itensP = municipio_mapa_p3::where('idp2',$id)->count();
+$itensP = municipio_mapa_p3::where('idp2',$id)->count();
 
                
                 if ($itensP>0) { 
@@ -164,6 +205,7 @@ echo  $itensP = municipio_mapa_p3::where('idp2',$id)->count();
                         </div>
                         </div>
                     
+
 
 <!--  fim -->
                             <div class="form-group row mb-0">
